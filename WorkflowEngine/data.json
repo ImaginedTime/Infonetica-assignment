@@ -1,6 +1,33 @@
 {
   "Workflows": [
     {
+      "Slug": "dsfgsfdg",
+      "States": [
+        {
+          "Id": "new",
+          "IsInitial": true,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "completed",
+          "IsInitial": false,
+          "IsFinal": true,
+          "Enabled": true
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "complete",
+          "Enabled": true,
+          "FromStates": [
+            "new"
+          ],
+          "ToState": "completed"
+        }
+      ]
+    },
+    {
       "Slug": "leave-approval",
       "States": [
         {
@@ -54,25 +81,304 @@
           "ToState": "closed"
         }
       ]
+    },
+    {
+      "Slug": "somehting approval",
+      "States": [
+        {
+          "Id": "new",
+          "IsInitial": true,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "managerApproval",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "hrApproved",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "approved",
+          "IsInitial": false,
+          "IsFinal": true,
+          "Enabled": true
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "mgrApproved",
+          "Enabled": true,
+          "FromStates": [
+            "new"
+          ],
+          "ToState": "managerApproval"
+        },
+        {
+          "Id": "hrApproved",
+          "Enabled": true,
+          "FromStates": [
+            "managerApproval"
+          ],
+          "ToState": "hrApproved"
+        },
+        {
+          "Id": "complete",
+          "Enabled": true,
+          "FromStates": [
+            "hrApproved"
+          ],
+          "ToState": "approved"
+        }
+      ]
+    },
+    {
+      "Slug": "soemthin",
+      "States": [
+        {
+          "Id": "new",
+          "IsInitial": true,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "middle",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "middle1",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "middle2",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "final",
+          "IsInitial": false,
+          "IsFinal": true,
+          "Enabled": true
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "start",
+          "Enabled": true,
+          "FromStates": [
+            "new"
+          ],
+          "ToState": "middle"
+        },
+        {
+          "Id": "complete",
+          "Enabled": true,
+          "FromStates": [
+            "middle",
+            "middle1",
+            "middle2"
+          ],
+          "ToState": "final"
+        }
+      ]
+    },
+    {
+      "Slug": "sadf",
+      "States": [
+        {
+          "Id": "start",
+          "IsInitial": true,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "soemthing",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "somethign12",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "soemthign",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "final",
+          "IsInitial": false,
+          "IsFinal": true,
+          "Enabled": true
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "begin",
+          "Enabled": true,
+          "FromStates": [
+            "start"
+          ],
+          "ToState": "soemthing"
+        },
+        {
+          "Id": "begin2",
+          "Enabled": true,
+          "FromStates": [
+            "start"
+          ],
+          "ToState": "somethign12"
+        },
+        {
+          "Id": "begin3",
+          "Enabled": true,
+          "FromStates": [
+            "start"
+          ],
+          "ToState": "soemthign"
+        },
+        {
+          "Id": "complete",
+          "Enabled": true,
+          "FromStates": [
+            "soemthing",
+            "somethign12",
+            "soemthign"
+          ],
+          "ToState": "final"
+        }
+      ]
     }
   ],
   "Instances": [
     {
-      "InstanceId": "5cfd3d20cf9b4c0fbd529ec8bf92a741",
+      "InstanceId": "e7b17e80f8c740a89c46ac0ddd6d8042",
+      "DefinitionSlug": "dsfgsfdg",
+      "CurrentState": "completed",
+      "History": [
+        {
+          "Action": "complete",
+          "Timestamp": "2025-07-17T19:20:42.0557172Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "1a06a683aa2145d682a5c8d877d49d42",
       "DefinitionSlug": "leave-approval",
       "CurrentState": "closed",
       "History": [
         {
           "Action": "submit",
-          "Timestamp": "2025-07-17T13:45:10.5246894Z"
+          "Timestamp": "2025-07-17T19:28:58.7691224Z"
         },
         {
           "Action": "mgrApprove",
-          "Timestamp": "2025-07-17T13:45:26.9818058Z"
+          "Timestamp": "2025-07-17T19:29:00.1883272Z"
         },
         {
           "Action": "hrApprove",
-          "Timestamp": "2025-07-17T13:45:44.4915583Z"
+          "Timestamp": "2025-07-17T19:29:01.5241636Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "cebbcd99d1fd4d0ea0225ef0f1f00241",
+      "DefinitionSlug": "leave-approval",
+      "CurrentState": "closed",
+      "History": [
+        {
+          "Action": "submit",
+          "Timestamp": "2025-07-17T19:29:13.8620932Z"
+        },
+        {
+          "Action": "mgrApprove",
+          "Timestamp": "2025-07-17T19:29:14.9141915Z"
+        },
+        {
+          "Action": "hrApprove",
+          "Timestamp": "2025-07-17T19:29:16.1246724Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "737fac621de5415090fb42da57cc46f6",
+      "DefinitionSlug": "leave-approval",
+      "CurrentState": "closed",
+      "History": [
+        {
+          "Action": "submit",
+          "Timestamp": "2025-07-17T19:29:19.7958004Z"
+        },
+        {
+          "Action": "mgrApprove",
+          "Timestamp": "2025-07-17T19:29:20.5559458Z"
+        },
+        {
+          "Action": "hrApprove",
+          "Timestamp": "2025-07-17T19:29:21.2426715Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "bd6ea83c92bf4c2e884ba6fa583a1661",
+      "DefinitionSlug": "somehting approval",
+      "CurrentState": "approved",
+      "History": [
+        {
+          "Action": "mgrApproved",
+          "Timestamp": "2025-07-17T19:39:28.5717003Z"
+        },
+        {
+          "Action": "hrApproved",
+          "Timestamp": "2025-07-17T19:39:29.6353395Z"
+        },
+        {
+          "Action": "complete",
+          "Timestamp": "2025-07-17T19:39:30.1973936Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "b56666a219c84e2aa8ebf28a8b60ca25",
+      "DefinitionSlug": "soemthin",
+      "CurrentState": "final",
+      "History": [
+        {
+          "Action": "start",
+          "Timestamp": "2025-07-17T19:41:09.6465715Z"
+        },
+        {
+          "Action": "complete",
+          "Timestamp": "2025-07-17T19:41:14.0102855Z"
+        }
+      ]
+    },
+    {
+      "InstanceId": "c6607192bd7e43aaa40826270129721c",
+      "DefinitionSlug": "sadf",
+      "CurrentState": "final",
+      "History": [
+        {
+          "Action": "begin3",
+          "Timestamp": "2025-07-17T19:43:04.8727444Z"
+        },
+        {
+          "Action": "complete",
+          "Timestamp": "2025-07-17T19:43:05.8660084Z"
         }
       ]
     }

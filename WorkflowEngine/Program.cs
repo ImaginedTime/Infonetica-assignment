@@ -7,11 +7,32 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IWorkflowStore, InMemoryWorkflowStore>();
 builder.Services.AddSingleton<IWorkflowRunner, InMemoryWorkflowRunner>();
 
+// Add CORS policy for frontend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy
+            .WithOrigins("http://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    );
+});
+
 // Add Swagger/OpenAPI support
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Load persisted data from data.json on startup
+using (var scope = app.Services.CreateScope())
+{
+    var store = scope.ServiceProvider.GetRequiredService<IWorkflowStore>();
+    store.LoadFromFileAsync().GetAwaiter().GetResult();
+}
+
+// Enable CORS for all endpoints
+app.UseCors("AllowFrontend");
 
 // Enable Swagger UI in development
 if (app.Environment.IsDevelopment())
