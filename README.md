@@ -1,8 +1,16 @@
+`Uday om srivastava - 22ME3FP49`
+<br/>
+`Email: udayomsrivastava@kgpian.iitkgp.ac.in`
+
 # WorkflowEngine
 
 A **Configurable Workflow Engine** built with .NET 8 Minimal APIs. This service allows non-developers to define, deploy, and operate arbitrary state machine workflows via JSON and REST APIs—no code required.
 
 ---
+
+## Learnings
+
+I really had so much fun building the project, this concept about workflow creation was quite new to me as well as the dev in DOTNET, I has to learn many things for it, and for some part of it, I did take some help from GPT - which I won't take the full credit for. I really enjoyed it, Thank you for giving this project 😁😁
 
 ## 🚀 Features
 
@@ -11,6 +19,7 @@ A **Configurable Workflow Engine** built with .NET 8 Minimal APIs. This service 
 - **In-memory + file-based persistence** (all data in `WorkflowEngine/data.json`)
 - **Modular, extensible architecture** (easy to add DB, UI, or new features)
 - **Interactive API documentation** via Swagger UI
+- **Modern web frontend** (Next.js + shadcn/ui) for managing workflows and instances
 
 ---
 
@@ -23,6 +32,9 @@ WorkflowEngine/
   Program.cs        # Minimal API endpoint mappings
   data.json         # All workflow and instance data (runtime, not source)
   ...
+frontend/
+  src/              # Next.js app source code
+  ...
 ```
 
 ---
@@ -30,12 +42,14 @@ WorkflowEngine/
 ## 🛠️ Setup & Run
 
 ### 1. Prerequisites
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (for backend)
+- [Node.js 18+ and npm](https://nodejs.org/) (for frontend)
 
 ### 2. Clone & Restore
 ```sh
-git clone <your-repo-url>
-cd WorkflowEngine
+# Clone the repo
+ git clone <your-repo-url>
+ cd WorkflowEngine
 ```
 
 ### 3. Run the API (with hot reload)
@@ -46,6 +60,32 @@ dotnet watch run
 ### 4. Open Swagger UI
 - Visit: [http://localhost:5261/swagger](http://localhost:5261/swagger) (or the port shown in your terminal)
 - Explore and test all endpoints interactively
+
+---
+
+## 🌐 Frontend UI (Next.js)
+
+A modern web UI is available for managing workflows and instances, built with Next.js, TypeScript, Tailwind CSS, shadcn/ui, and Axios.
+
+### Features
+- Dashboard: List all workflows, view details, and manage instances
+- Create new workflows with a user-friendly form (dynamic states/actions)
+- View workflow details, states, actions, and all instances
+- Start new workflow instances
+- View and operate on workflow instances (state, history, available actions)
+- Modern, responsive design using shadcn/ui components
+
+### Prerequisites
+- Node.js 18+ and npm
+
+### Install & Run
+```sh
+cd ../frontend
+npm install
+npm run dev
+```
+- The frontend will be available at [http://localhost:3000](http://localhost:3000)
+- Make sure the backend API is running at [http://localhost:5261](http://localhost:5261) (or update the API URL in `src/lib/api.ts` if needed)
 
 ---
 
@@ -211,21 +251,3 @@ curl http://localhost:5261/api/workflows
 - **Multi-tenancy**: Isolate workflows/data per organization
 
 ---
-
-## 🧑‍💻 Contributing
-
-1. Fork the repo
-2. Create a feature branch
-3. Open a pull request with your changes
-
----
-
-## 📚 License
-
-MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 💬 Questions / Support
-
-Open an issue or discussion in the repository, or contact the maintainer. 
