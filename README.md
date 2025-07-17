@@ -10,7 +10,7 @@ A **Configurable Workflow Engine** built with .NET 8 Minimal APIs. This service 
 
 ## Learnings
 
-I really had so much fun building the project, this concept about workflow creation was quite new to me as well as the dev in DOTNET, I has to learn many things for it, and for some part of it, I did take some help from GPT - which I won't take the full credit for. I really enjoyed it, Thank you for giving this project 😁😁
+I really had so much fun building the project, this concept about workflow creation was quite new to me as well as the dev in DOTNET, I has to learn many things for it, and for some part of it, I did take some help from GPT - which I won't take the full credit for. I really enjoyed it, Thank you for giving this project 😁😁. I didn't host it, because I didn't find any free hosting providers for the .NET, and could have cost me for hosting on AWS
 
 ## 🚀 Features
 
