@@ -1,0 +1,80 @@
+{
+  "Workflows": [
+    {
+      "Slug": "leave-approval",
+      "States": [
+        {
+          "Id": "draft",
+          "IsInitial": true,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "managerApproved",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "hrApproved",
+          "IsInitial": false,
+          "IsFinal": false,
+          "Enabled": true
+        },
+        {
+          "Id": "closed",
+          "IsInitial": false,
+          "IsFinal": true,
+          "Enabled": true
+        }
+      ],
+      "Actions": [
+        {
+          "Id": "submit",
+          "Enabled": true,
+          "FromStates": [
+            "draft"
+          ],
+          "ToState": "managerApproved"
+        },
+        {
+          "Id": "mgrApprove",
+          "Enabled": true,
+          "FromStates": [
+            "managerApproved"
+          ],
+          "ToState": "hrApproved"
+        },
+        {
+          "Id": "hrApprove",
+          "Enabled": true,
+          "FromStates": [
+            "hrApproved"
+          ],
+          "ToState": "closed"
+        }
+      ]
+    }
+  ],
+  "Instances": [
+    {
+      "InstanceId": "5cfd3d20cf9b4c0fbd529ec8bf92a741",
+      "DefinitionSlug": "leave-approval",
+      "CurrentState": "closed",
+      "History": [
+        {
+          "Action": "submit",
+          "Timestamp": "2025-07-17T13:45:10.5246894Z"
+        },
+        {
+          "Action": "mgrApprove",
+          "Timestamp": "2025-07-17T13:45:26.9818058Z"
+        },
+        {
+          "Action": "hrApprove",
+          "Timestamp": "2025-07-17T13:45:44.4915583Z"
+        }
+      ]
+    }
+  ]
+}
